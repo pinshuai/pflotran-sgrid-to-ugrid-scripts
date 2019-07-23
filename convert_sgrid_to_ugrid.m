@@ -27,16 +27,13 @@ nvx = nx + 1;
 nvy = ny + 1;
 nvz = nz + 1;
 
-cell_ids         = zeros(nx,ny,nz);
 xv               = zeros(nvx,nvy,nvz);
 yv               = zeros(nvx,nvy,nvz);
 zv               = zeros(nvx,nvy,nvz);
 is_vertex_active = zeros(nvx,nvy,nvz);
 
-
-loc = find(mat_ids >  0);cell_ids(loc) = [1:length(loc)];
-
 is_cell_active = compute_active_cells(sgrid, h5_material_filename);
+cell_ids       = compute_ids_of_active_cells(sgrid, h5_material_filename);
 
 ugrid_mat_ids = mat_ids(loc);
 ugrid_mat_cell_ids = cell_ids(mat_cell_ids(loc));
